@@ -9,25 +9,29 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import utils.ReadExcel;
 
-public class ProjectSpecificMethods {
+public class ProjectSpecificMethods extends DriverInstance{
 	
 	public static ChromeDriver driver;
-	public String excelfileName;
+	public static String excelfileName;
+	public static String leadId;
 	
 	@BeforeMethod
 	public void launchBrowser() {
+		
+	//	setDriver("chrome");
 		
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://leaftaps.com/opentaps/control/main");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
+		
 	}
 	
 	@AfterMethod
 	public void closeBrowser() {
-		driver.close();
+//		driver.close();
+		driver.quit();
 	}
 	
 	@DataProvider(name="fetchData")
@@ -40,7 +44,7 @@ public class ProjectSpecificMethods {
 		data[1][0] = "Democsr";
 		data[1][1] = "crmsfa";*/
 		
-		return ReadExcel.readExcelData(excelfileName);		
+		return ReadExcel.readExcelData(excelfileName);
 
 	}
 	

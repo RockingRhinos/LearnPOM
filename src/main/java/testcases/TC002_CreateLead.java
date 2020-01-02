@@ -6,30 +6,28 @@ import org.testng.annotations.Test;
 import base.ProjectSpecificMethods;
 import pages.LoginPage;
 
-public class TC001_CreateLead extends ProjectSpecificMethods{
+public class TC002_CreateLead extends ProjectSpecificMethods{
 	
 	@BeforeTest
 	public void passData() {
-		
 		excelfileName = "TC001";
-
 	}
 	
 	@Test(dataProvider="fetchData")
-	public void tc001_createLead(String uName, String pwd) {
+	public void tc002_createLead(String uName, String pwd) {
 		
 		new LoginPage()
 		.enterUsername(uName)
 		.enterPassword(pwd)
 		.clickOnLogin()
-		/*.clickCRMSFA()
+		.clickCRMSFA()
 		.clickOnLeads()
 		.clickOnCreateLead()
 		.enterCompanyName()
 		.enterFirstName()
 		.enterLastName()
 		.submitCreateLead()
-		.verifyFirstName()*/;
+		.verifyFirstName();
 		
 	}
 	
